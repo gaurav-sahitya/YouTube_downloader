@@ -3,7 +3,7 @@ try:
 
     url=input("Enter YouTube URL: ")
     yt=YouTube(url)
-    vid_str=yt.streams.filter(type="video",audio_codec="mp4a.40.2").order_by("resolution").desc()
+    vid_str=yt.streams.filter(progressive=True).order_by("resolution").desc()
     aud_str=yt.streams.filter(type="audio").order_by("abr").desc()
 
     vid_qul=[str(i).split()[3].split('"')[1] for i in vid_str]
